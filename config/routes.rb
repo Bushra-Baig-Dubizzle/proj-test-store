@@ -19,23 +19,24 @@ Rails.application.routes.draw do
 
   #! Always put more specific routes before dynamic ones:
 
-  get "/products", to: "products#index"
-  
+  # get "/products", to: "products#index"
+  # # if not using resources :products we get products_new_path, we can change it via the aliases
+  # get 'products/new', to: 'products#new', as: 'new_product'
 
-  # if not using resources :products we get products_new_path, we can change it via the aliases
-  get 'products/new', to: 'products#new', as: 'new_product'
+  # post "/products", to: "products#create"
+  # get "/products/:id", to: "products#show", as: 'product'
 
-  
-  post "/products", to: "products#create"
-  get "/products/:id", to: "products#show", as: 'product'
+  # get "/products/:id/edit", to: "products#edit", as: 'edit_product'
+  # patch "/products/:id", to: "products#update"
+  # put "/products/:id", to: "products#update"
 
-  get "/products/:id/edit", to: "products#edit", as: 'edit_product'
-  patch "/products/:id", to: "products#update"
-  put "/products/:id", to: "products#update"
-
-  delete "/products/:id", to: "products#destroy"
+  # delete "/products/:id", to: "products#destroy"
 
 # resources :products for all actions
+
+resources :products do
+  resources :subscribers, only: [ :create ]
+end
 
   
 end
