@@ -12,13 +12,18 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+
+  #! Always put more specific routes before dynamic ones:
+
   get "/products", to: "products#index"
-  get "/products/:id", to: "products#show"
   
-  get "/products/new", to: "products#new"
 
-# post "/products", to: "products#create"
+  # if not using resources :products we get products_new_path, we can change it via the aliases
+  get 'products/new', to: 'products#new', as: 'new_product'
 
+  
+  post "/products", to: "products#create", as: 'product'
+  get "/products/:id", to: "products#show"
 
 # get "/products/:id/edit", to: "products#edit"
 # patch "/products/:id", to: "products#update"
