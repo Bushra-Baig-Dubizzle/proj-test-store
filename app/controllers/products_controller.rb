@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
     def product_params
       # Strong Parameters: allow only :name to be submitted through forms for security
       # params.expect(product: [ :name ])
-      params.require(:product).permit(:name, :description, :featured_image)
+      params.require(:product).permit(:name, :description, :featured_image, :inventory_count)
     end
 
     def set_product
