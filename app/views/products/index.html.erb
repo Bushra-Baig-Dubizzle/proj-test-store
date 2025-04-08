@@ -1,20 +1,19 @@
 <h1>All Products</h1>
 
 <% if user_signed_in? %>
-  <%= link_to "New product", new_product_path %>
+  <p>
+    <%= link_to "New Product", new_product_path, class: "btn btn-primary" %>
+  </p>
 <% end %>
 
-
-<ul>
-  <% cache @products.each do |product| %>
-    <li>
-
-      ID: <%= product.id %> - 
-
-      <a href="/products/<%= product.id %>">
-        Name: <%= product.name.presence || "(no name)" %> - 
-      </a>
-      Created: <%= product.created_at.strftime("%Y-%m-%d %H:%M") %>
-    </li>
-  <% end %>
-</ul>
+<% cache @products do %>
+  <ul>
+    <% @products.each do |product| %>
+      <li>
+        ID: <%= product.id %> –
+        <%= link_to "Name: #{product.name.presence || '(no name)'}", product_path(product) %> –
+        Created: <%= product.created_at.strftime("%Y-%m-%d %H:%M") %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
