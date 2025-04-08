@@ -3,8 +3,12 @@
 <ul>
   <% @products.each do |product| %>
     <li>
+
       ID: <%= product.id %> - 
-      Name: <%= product.name.presence || "(no name)" %> - 
+
+      <a href="/products/<%= product.id %>">
+        Name: <%= product.name.presence || "(no name)" %> - 
+      </a>
       Created: <%= product.created_at.strftime("%Y-%m-%d %H:%M") %>
     </li>
   <% end %>
