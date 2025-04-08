@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+   
+  # 👇👇 THIS is your root route — new line!
+  root "products#index"
 
 
   #! Always put more specific routes before dynamic ones:
