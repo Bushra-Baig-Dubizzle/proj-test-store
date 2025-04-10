@@ -3,6 +3,6 @@ class GuestsCleanupJob < ApplicationJob
 
   def perform(*args)
     puts ">>> GuestsCleanupJob is running with args: #{args.inspect}"
-    $stdout.flush
+    # $stdout.flush
   end
 end
