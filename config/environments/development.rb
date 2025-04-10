@@ -80,14 +80,26 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
   #
   # Looking to send emails in production? Check out our Email API/SMTP product!
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    user_name: "afc8a6fb01e7e2",
-    password: "2f3d43c7756761",
-    address: "sandbox.smtp.mailtrap.io",
-    host: "sandbox.smtp.mailtrap.io",
-    port: "2525",
-    authentication: :login
-  }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   user_name: "afc8a6fb01e7e2",
+  #   password: "2f3d43c7756761",
+  #   address: "sandbox.smtp.mailtrap.io",
+  #   host: "sandbox.smtp.mailtrap.io",
+  #   port: "2525",
+  #   authentication: :login
+  # }
   config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               "gmail.com",
+    user_name:            "bushra.rashid.baig1@gmail.com",
+    password:             "", # not your Gmail login, the App Password
+    authentication:       "plain",
+    enable_starttls_auto: true
+  }
 end
